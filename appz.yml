@@ -19,10 +19,14 @@ deploy:
 
 volumes:
   - claim: mariadb-master-data
+    class: cstor-csi-disk
+    matchLabels: false
     mount: /appz/data
     name: data
     size: 5Gi
   - claim: mariadb-master-backup
+    class: cstor-csi-disk
+    matchLabels: false
     mount: /appz/backup
     name: backup
     size: 5Gi
@@ -35,4 +39,4 @@ properties:
       vault: MYSQL_WORDPRESS_PASSWORD
     MYSQL_ROOT_PASSWORD:
       vault: MYSQL_ROOT_PASSWORD_KEY
-    revision : 25
+    revision : 26
